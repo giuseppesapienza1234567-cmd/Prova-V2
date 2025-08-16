@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualizzatore PDF - Volantino</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- PDF.js (UMD) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="toolbar" role="region" aria-label="Barra strumenti">
+      <div class="doc-info">
+        <span class="doc-name" title="Volantino.pdf">Volantino.pdf</span>
+      </div>
+      <div class="pager" aria-live="polite">
+        <span id="page-num">1</span>
+        <span class="slash">/</span>
+        <span id="page-count">—</span>
+      </div>
+    </header>
+
+    <main id="viewer-shell">
+      <div id="viewer" class="viewer" aria-label="Pagina PDF">
+        <div id="sheet" class="sheet" aria-hidden="true">
+          <canvas id="pdf-canvas"></canvas>
+          <div class="page-gloss" aria-hidden="true"></div>
+        </div>
+
+        <button id="prev" class="nav-btn left" aria-label="Pagina precedente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 19.5L8.5 12l7-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="next" class="nav-btn right" aria-label="Pagina successiva">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4.5L15.5 12l-7 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div id="loader" class="loader" aria-live="polite" aria-busy="true" hidden>
+          <div class="spinner"></div>
+          <span>Caricamento…</span>
+        </div>
+
+        <div id="error" class="error" hidden role="alert"></div>
+      </div>
+    </main>
+
+    <footer class="credits">
+      <span>Usa ← → sulla tastiera o trascina per cambiare pagina</span>
+    </footer>
+  </div>
+</body>
+</html>
